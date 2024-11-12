@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block main %}
+<style>
+        .hero {
+            background: url("{% static 'img/library.jpg' %}") no-repeat center center/cover;
+            height: 200px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            color: #8d6e63;
+            padding: 10px;
+
+        }
+
+        .categories {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 30px;
+        }
+
+        .category {
+            width: 30%;
+            height: auto;
+            background-color: #d7ccc8;
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #bca49d;
+            border-radius: 5px;
+        }
+
+        .category img {
+            width: 100%;
+            aspect-ratio: 1;
+            max-height: 200px;
+            object-fit: cover;
+        }
+
+        .category h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .category a {
+            text-decoration: none;
+            color: #0288d1;
+            font-size: 14px;
+        }
+    </style>
+    <div class="hero"></div>
+    <section>
+        <h2 class="section-title">Categorias</h2>
+        <div class="categories">
+            <div class="category">
+                <img src="{% static 'img/bible.png' %}" alt="Bíblia Sagrada">
+                <h3>Mais vendidos</h3>
+                <a href="#">Ver mais</a>
+            </div>
+            <div class="category">
+                <img src="{% static 'img/harry-potter.png' %}" alt="Livros populares">
+                <h3>Populares</h3>
+                <a href="#">Ver mais</a>
+            </div>
+            <div class="category">
+                <img src="{% static 'img/books.png' %}" alt="Livros amados pela crítica">
+                <h3>Amados pela crítica</h3>
+                <a href="#">Ver mais</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}
