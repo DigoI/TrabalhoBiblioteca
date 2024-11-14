@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<style>
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    .main-container {
+        width: 500px;
+        margin: 16px auto;
+    }
+
+    .book-item {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .book-item img {
+        width: 50px;
+        aspect-ratio: auto;
+    }
+</style>
+
+<div class="main-container">
+    {% for book in books %}
+        <a href="{% url 'book_details' book.id %}">
+            <div class="book-item">
+                <img src="{{ book.imagem.url }}">
+                <div>
+                    <h3>{{ book.nome }}</h3>
+                    <p>{{ book.preco }}</p>
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+</div>
+{% endblock %}

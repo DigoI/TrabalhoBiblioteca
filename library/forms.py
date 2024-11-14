@@ -1,5 +1,6 @@
 from django.forms import ModelForm, Form, CharField, PasswordInput, TextInput, EmailInput
 from django.contrib.auth.models import User
+from .models import Book
 
 class LoginForm(Form):
     username = CharField(widget=TextInput(attrs={ 'placeholder': 'Username' }))
@@ -15,3 +16,8 @@ class SignUpForm(ModelForm):
             'email': EmailInput(attrs={ 'placeholder': 'Email' }),
             'password': PasswordInput(attrs={ 'placeholder': 'Password' })
         }
+
+class BookForm(ModelForm):
+    class Meta:
+        model = Book
+        fields = '__all__'

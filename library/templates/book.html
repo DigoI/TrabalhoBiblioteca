@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+
+{% block main %}
+    <style>
+        .main-content {
+            max-width: 60%;
+            margin: auto;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        .book-details {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .book-details img {
+            width: 250px;
+            aspect-ratio: auto;
+            border-radius: 5px;
+        }
+
+        .book-info {
+            flex: 1;
+        }
+
+        .book-info h2 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .book-info p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .book-info .price {
+            font-size: 24px;
+            color: #27ae60;
+            margin: 10px 0;
+        }
+
+        .book-info button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .book-info a button {
+            margin-top: 0.5rem;
+        }
+
+        .book-info .delete {
+            background-color: rgb(255, 48, 48);
+        }
+    </style>
+    <div class="main-content">
+        <div class="book-details">
+            <img src="{{ livro.imagem.url }}" alt="Capa do Livro">
+            <div class="book-info">
+                <h2>{{ livro.nome }}</h2>
+                <p>{{ livro.descricao }}</p>
+                <p class="price">R$ {{ livro.preco }}</p>
+                <button>Adicionar ao Carrinho</button>
+                <a href="{% url 'edit_book' livro.id %}">
+                    <button>Editar</button>
+                </a>
+                <a href="{% url 'delete_book' livro.id %}">
+                    <button class="delete">Excluir</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

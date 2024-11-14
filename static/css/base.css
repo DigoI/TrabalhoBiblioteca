@@ -60,6 +60,11 @@ header .search-bar button {
     cursor: pointer;
 }
 
+a.logo {
+    text-decoration: none;
+    color: white;
+}
+
 main {
     min-height: calc(100vh - 112px);
 }
