@@ -9,18 +9,52 @@
     }
 
     .main-container {
-        width: 500px;
+        width: 700px;
         margin: 16px auto;
+        gap: 1rem;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
     }
 
     .book-item {
+        width: 100%;
+
         display: flex;
+        flex-direction: column;
         gap: 0.5rem;
     }
 
+    .book-item h3 {
+        font-size: 20px;
+        font-weight: 700;
+    }
+
     .book-item img {
-        width: 50px;
+        width: 200px;
         aspect-ratio: auto;
+    }
+
+    .preco {
+        opacity: 0.8;
+    }
+
+    .paginacao {
+        margin-top: 10px;
+
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .paginacao button {
+        border: none;
+        border-radius: 8px;
+        padding: 10px;
+
+        background-color: #ccc;
+
+        cursor: pointer;
     }
 </style>
 
@@ -31,10 +65,24 @@
                 <img src="{{ book.imagem.url }}">
                 <div>
                     <h3>{{ book.nome }}</h3>
-                    <p>{{ book.preco }}</p>
+                    <p class="preco">Preço: {{ book.preco }}</p>
+                    <p>{{ book.descricao }}</p>
                 </div>
             </div>
         </a>
     {% endfor %}
+</div>
+<div class="paginacao">
+    {% if books.has_previous %}
+    <a href="?page={{ books.previous_page_number }}">
+        <button>Anterior</button>
+    </a>
+    {% endif %}
+
+    {% if books.has_next %}
+    <a href="?page={{ books.next_page_number }}">
+        <button>Próximo</button>
+    </a>
+    {% endif %}
 </div>
 {% endblock %}

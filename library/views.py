@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth.models import User
 from .forms import BookForm, LoginForm, SignUpForm
 from .models import Book
+from django.core.paginator import Paginator
 
 # Create your views here.
 def index(request):
@@ -101,7 +102,15 @@ def edit_book(request, book_id):
     return render(request, 'create_book.html', context)
 
 def book_list(request):
-    books = Book.objects.all()
+    books_list = Book.objects.all()
+    paginator = Paginator(books_list, 6)
+
+    page = request.GET.get('page', 1)
+
+    try:
+        books = paginator.get_page(page)
+    except:
+        books = paginator.get_page(1)
 
     context = {
         'books': books
