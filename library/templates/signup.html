@@ -123,7 +123,7 @@
     <div class="login-area">
         <h1>BOOK SOFT</h1>
         <hr>
-        <h2>LOGIN</h2>
+        <h2>REGISTRO</h2>
         <form action="" method="post">
             {% csrf_token %}
             <div class="form-group">
@@ -135,11 +135,11 @@
             <div class="form-group">
                 {{ form.password }}
             </div>
-            <a href="#">Esqueceu a senha?</a>
+            <a href="#">Já tem uma conta?</a>
             <button type="submit" class="login-button">Enter</button>
         </form>
         <div class="register">
-            <a href="#">Registrar-se</a>
+            <a href="{% url 'login' %}">Login</a>
         </div>
     </div>
 </body>

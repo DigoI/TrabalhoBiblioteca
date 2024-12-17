@@ -21,3 +21,6 @@ class BookForm(ModelForm):
     class Meta:
         model = Book
         fields = '__all__'
+
+class Procurar(Form):
+    nome = CharField(max_length=100, required=False, widget=TextInput(attrs={ 'id': 'busca' }))

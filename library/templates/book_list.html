@@ -3,6 +3,24 @@
 {% block main %}
 
 <style>
+    .search-bar {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    }
+
+    .search-bar input {
+    padding: 5px;
+    font-size: 14px;
+    }
+
+    .search-bar button {
+    padding: 5px;
+    font-size: 14px;
+    background-color: #ccc;
+    border: none;
+    cursor: pointer;
+    }
     a {
         text-decoration: none;
         color: black;
@@ -57,6 +75,13 @@
         cursor: pointer;
     }
 </style>
+
+<form method="GET">
+    <div class="search-bar">
+        {{form.as_p}}
+        <button type="submit">Procurar</button>
+    </div> 
+</form>
 
 <div class="main-container">
     {% for book in books %}

@@ -42,24 +42,7 @@ header nav a {
     font-size: 14px;
 }
 
-header .search-bar {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
 
-header .search-bar input {
-    padding: 5px;
-    font-size: 14px;
-}
-
-header .search-bar button {
-    padding: 5px;
-    font-size: 14px;
-    background-color: #ccc;
-    border: none;
-    cursor: pointer;
-}
 
 a.logo {
     text-decoration: none;

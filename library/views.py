@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth.models import User
-from .forms import BookForm, LoginForm, SignUpForm
-from .models import Book
+from .forms import *
+from .models import *
 from django.core.paginator import Paginator
 
 # Create your views here.
@@ -11,7 +11,6 @@ def index(request):
 
 def login(request):
     if request.method == 'POST':
-        print('HEY')
         form = LoginForm(request.POST)
 
         print(form.errors)
@@ -103,6 +102,11 @@ def edit_book(request, book_id):
 
 def book_list(request):
     books_list = Book.objects.all()
+    form = Procurar(request.GET or None)
+    if form.is_valid():
+        nome = form.cleaned_data.get('nome')
+        if nome:
+            books_list = books_list.filter(nome__icontains=nome)
     paginator = Paginator(books_list, 6)
 
     page = request.GET.get('page', 1)
@@ -113,7 +117,8 @@ def book_list(request):
         books = paginator.get_page(1)
 
     context = {
-        'books': books
+        'books': books,
+        'form': form
     }
 
     return render(request, 'book_list.html', context)
@@ -122,3 +127,35 @@ def delete_book(request, book_id):
     Book.objects.get(id=book_id).delete()
 
     return redirect('index')
+
+def categorias(request):
+    categorias = Categoria.objects.all()
+    context = {
+        'categorias': categorias
+    }
+    return render (request, 'categorias.html', context)
+
+def categoria(request, id):
+    categoria = Categoria.objects.get(id=id)
+    books_list = Book.objects.all().filter(categoria=categoria)
+    form = Procurar(request.GET or None)
+    if form.is_valid():
+        nome = form.cleaned_data.get('nome')
+        if nome:
+            books_list = books_list.filter(nome__icontains=nome)
+    paginator = Paginator(books_list, 6)
+
+    page = request.GET.get('page', 1)
+
+    try:
+        books = paginator.get_page(page)
+    except:
+        books = paginator.get_page(1)
+
+    context = {
+        'books': books,
+        'form': form
+    }
+
+    return render(request, 'book_list.html', context)
+
