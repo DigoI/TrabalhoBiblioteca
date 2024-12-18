@@ -11,5 +11,6 @@ urlpatterns = [
     path('edit_book/<int:book_id>', edit_book, name='edit_book'),
     path('delete_book/<int:book_id>', delete_book, name='delete_book'),
     path('categorias', categorias, name='categorias'),
-    path('categoria/<int:id>', categoria, name='categoria')
+    path('categoria/<int:id>', categoria, name='categoria'),
+    path('usuario', usuario, name='usuario'),
 ]

@@ -159,3 +159,9 @@ def categoria(request, id):
 
     return render(request, 'book_list.html', context)
 
+def usuario(request):
+    usuario = request.user
+    context = {
+        'usuario': usuario
+    }
+    return render(request, 'usuario.html', context)

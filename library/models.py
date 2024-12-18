@@ -22,3 +22,4 @@ class Book(models.Model):
     categoria = models.ManyToManyField(Categoria)
     def __str__(self):
         return self.nome
+
