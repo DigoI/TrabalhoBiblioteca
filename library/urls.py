@@ -13,4 +13,5 @@ urlpatterns = [
     path('categorias', categorias, name='categorias'),
     path('categoria/<int:id>', categoria, name='categoria'),
     path('usuario', usuario, name='usuario'),
+    path('logout', sair, name='sair')
 ]

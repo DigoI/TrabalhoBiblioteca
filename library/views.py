@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import authenticate, logout, login as auth_login
 from django.contrib.auth.models import User
 from .forms import *
 from .models import *
@@ -165,3 +165,7 @@ def usuario(request):
         'usuario': usuario
     }
     return render(request, 'usuario.html', context)
+
+def sair(request):
+    logout(request)
+    return redirect('index')
